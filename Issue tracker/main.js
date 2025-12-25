@@ -13,6 +13,7 @@ const issues = [
   },
 ];
 
+localStorage.setItem("issues", JSON.stringify(issues));
 //Query selectors
 const themeButton = document.querySelector("#theme-button");
 const mainContainer = document.querySelector(".main-container");
