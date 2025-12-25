@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="main-container">
-      <h1 class="header">Issue Tracker</h1>
+      <h1 class="header">Mini Issue Tracker</h1>
 
       <button>Dark mode</button>
       <section>
@@ -34,6 +34,37 @@
         </select>
 
         <button class="btn-primary">+ Create Issue</button>
+      </section>
+
+      <!-- create Issue -->
+      <div class="modal">
+        <h2 class="modal-header">Create New Issue</h2>
+        <form id="issue-form" class="modal-form">
+          <div class="form-box">
+            <label for="issue-box">Title</label>
+            <input type="text" id="issue-box" required />
+
+            <label for="issue-description">Description</label>
+            <textarea id="issue-description" required></textarea>
+
+            <label for="issue-box">Priority</label>
+            <select id="issue-box" required>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-primary">Save Issue</button>
+          <button type="button" class="btn-secondary" id="close-modal-btn">
+            Cancel
+          </button>
+        </form>
+      </div>
+
+      <!-- Issues Section -->
+      <section id="issues-container" class="issues-section">
+        <div id="issues-list"></div>
       </section>
     </div>
   </body>
