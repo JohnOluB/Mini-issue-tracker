@@ -15,7 +15,7 @@
         <form class="form-box">
           <label for="search-box">Search</label
           ><input
-            type="text"
+            type="text"   
             id="search-box"
             placeholder="Search by title"
             required />
@@ -41,14 +41,14 @@
 
       <!-- create Issue -->
       <div class="modal">
-        <h2 class="modal-header">Create New Issue</h2>
+        <h2 class="modal-header" id="create-issue">Create New Issue</h2>
         <form id="issue-form" class="modal-form">
           <div class="form-box">
-            <label for="issue-box">Title</label>
+            <label for="issue-box" id="issue-title">Title</label>
             <input type="text" id="issue-box" required />
 
             <label for="issue-description">Description</label>
-            <textarea id="issue-description" required></textarea>
+            <textarea id="issue-box" required></textarea>
 
             <label for="issue-box">Priority</label>
             <select id="issue-box" required>
@@ -58,8 +58,8 @@
             </select>
           </div>
 
-          <button type="submit" class="btn-primary">Save Issue</button>
-          <button type="button" class="btn-secondary" id="close-modal-btn">
+          <button type="submit" class="btn-primary" id="save-button">Save Issue</button>
+          <button type="button" class="btn-secondary" id="cancel-button">
             Cancel
           </button>
         </form>
