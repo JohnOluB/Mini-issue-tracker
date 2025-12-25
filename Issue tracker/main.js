@@ -37,20 +37,6 @@ function displayIssues() {
     issuesList.appendChild(issueDiv);
   });
 }
-
-themeButton.addEventListener("click", () => {
-  mainContainer.classList.toggle("dark-theme");
-  if (mainContainer.classList.contains("dark-theme")) {
-    themeButton.textContent = "Light mode";
-  } else {
-    themeButton.textContent = "Dark mode";
-  }
-});
-
-createIssue.addEventListener("click", () => {
-  document.querySelector(".modal").classList.add("show");
-});
-
 saveButton.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -65,12 +51,11 @@ saveButton.addEventListener("click", (e) => {
       status: "open",
       priority: priority,
     };
-    
+
     issues.push(newIssue);
 
     displayIssues();
 
-    // Clear form and close modal
     document.querySelector("#issue-title").value = "";
     document.querySelector("#issue-description").value = "";
     document.querySelector(".modal").classList.remove("show");
@@ -79,10 +64,21 @@ saveButton.addEventListener("click", (e) => {
   }
 });
 
-// Cancel button
 cancelButton.addEventListener("click", () => {
-  document.querySelector(".modal").classList.remove("show");
+  document.querySelector(".new-issue").classList.remove("show");
 });
 
-// Display issues on page load
 displayIssues();
+
+createIssue.addEventListener("click", () => {
+  document.querySelector(".new-issue").classList.add("show");
+});
+
+themeButton.addEventListener("click", () => {
+  mainContainer.classList.toggle("dark-theme");
+  if (mainContainer.classList.contains("dark-theme")) {
+    themeButton.textContent = "Light mode";
+  } else {
+    themeButton.textContent = "Dark mode";
+  }
+});
