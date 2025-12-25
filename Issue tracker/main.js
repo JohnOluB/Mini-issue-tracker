@@ -14,7 +14,7 @@ const issues = [
 ];
 
 localStorage.setItem("issues", JSON.stringify(issues));
-//Query selectors
+
 const themeButton = document.querySelector("#theme-button");
 const mainContainer = document.querySelector(".main-container");
 const issueTitle = document.querySelector("#issue-title");
@@ -23,7 +23,21 @@ const saveButton = document.querySelector("#save-button");
 const cancelButton = document.querySelector("#cancel-button");
 const createIssue = document.querySelector("#create-issue");
 const issuesList = document.querySelector("#issues-list");
-//Event listener
+function displayIssues() {
+  issuesList.innerHTML = "";
+  issues.forEach((issue, index) => {
+    const issueDiv = document.createElement("div");
+    issueDiv.className = "issue-item";
+    issueDiv.innerHTML = `
+      <h3>${issue.title}</h3>
+      <p>${issue.description}</p>
+      <p>Status: ${issue.status}</p>
+    <p>Priority: ${issue.priority}</p>
+    `;
+    issuesList.appendChild(issueDiv);
+  });
+}
+
 themeButton.addEventListener("click", () => {
   mainContainer.classList.toggle("dark-theme");
   if (mainContainer.classList.contains("dark-theme")) {
@@ -34,7 +48,41 @@ themeButton.addEventListener("click", () => {
 });
 
 createIssue.addEventListener("click", () => {
-  issue;
+  document.querySelector(".modal").classList.add("show");
 });
 
-issuesList.addEventListener("click", (e) => {});
+saveButton.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const title = document.querySelector("#issue-title").value;
+  const description = document.querySelector("#issue-description").value;
+  const priority = document.querySelector("#issue-priority").value;
+
+  if (title.trim() && description.trim()) {
+    const newIssue = {
+      title: title,
+      description: description,
+      status: "open",
+      priority: priority,
+    };
+    
+    issues.push(newIssue);
+
+    displayIssues();
+
+    // Clear form and close modal
+    document.querySelector("#issue-title").value = "";
+    document.querySelector("#issue-description").value = "";
+    document.querySelector(".modal").classList.remove("show");
+  } else {
+    alert("Please fill in all fields");
+  }
+});
+
+// Cancel button
+cancelButton.addEventListener("click", () => {
+  document.querySelector(".modal").classList.remove("show");
+});
+
+// Display issues on page load
+displayIssues();
