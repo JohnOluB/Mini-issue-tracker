@@ -1,0 +1,27 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --border-color: #e0e0e0;
+}
+
+
+body.dark-theme {
+    --background-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #444444;
+}
+
+/* Apply theme colors */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+input,
+select,
+textarea {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
